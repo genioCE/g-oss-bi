@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  superset:
+    image: apache/superset:latest
+    env_file: .env
+    environment:
+      - SUPERSET_ADMIN=${SUPERSET_ADMIN}
+      - SUPERSET_PASSWORD=${SUPERSET_PASSWORD}
+    ports: ["8088:8088"]
+    volumes: ["./scripts:/app/docker"]
+    command: ["/app/docker/bootstrap.sh"]
